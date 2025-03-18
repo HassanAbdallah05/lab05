@@ -9,10 +9,7 @@ int main(){
    
     // fill in the missing parameters in the mmap command
 
-    int *ptr = mmap( , ,
-      ,
-      ,
-      , );    
+    int *ptr = mmap( NULL ,N*sizeof(int) ,PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1 ,0); 
 
     if(ptr == MAP_FAILED){
      printf("Mapping Failed\n");
@@ -39,13 +36,17 @@ int main(){
     }
     else{
          //parent
-         
+	 wait(NULL);    
          printf("\nParent:\n");
 
          printf("Updated values of the array elements :\n");
         
         // fill in here the missing code ....
-        
+
+	for (int i = 0; i < N; i++){
+             printf(" %d", ptr[i]);
+        }
+         printf("\n");
 
 
     }
